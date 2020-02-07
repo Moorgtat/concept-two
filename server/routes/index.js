@@ -13,4 +13,10 @@ router.get('/status', (req, res) => {
   })
 });
 
+router.post('/register', (req, res) => {
+  res.send({
+    message: `hello ${req.body.email}! you're registered!`
+  })
+});
+
 module.exports = router;

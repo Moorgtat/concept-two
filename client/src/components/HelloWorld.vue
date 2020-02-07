@@ -1,13 +1,13 @@
 <template>
   <div class="hello">
-    <h1>Commit</h1>
+    <h1>HelloWorld Component</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: "HelloWorld"
-};
+  name: 'HelloWorld'
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
