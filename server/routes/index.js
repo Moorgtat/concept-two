@@ -7,16 +7,5 @@ router.get('/', function(req, res, next) {
 });
 
 // LEARN node express
-router.get('/status', (req, res) => {
-  res.send({
-    message: 'hello world'
-  })
-});
-
-router.post('/register', (req, res) => {
-  res.send({
-    message: `hello ${req.body.email}! you're registered!`
-  })
-});
 
 module.exports = router;
