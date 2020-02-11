@@ -1,18 +1,39 @@
 <template>
   <div class="home">
     <h2>This is the home page</h2>
-    <HelloWorld/>
+    <Panel title="Songs">
+      <div v-for="song in songs" :key="song.id">
+        {{song.title}} -
+        {{song.artist}} -
+        {{song.album}}
+      </div>
+    </Panel>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import SongService from '@/services/SongService'
+import Panel from '../components/Panel'
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    Panel
+  },
+  data () {
+    return {
+      songs: null
+    }
+  },
+  async mounted () {
+    this.songs = (await SongService.index()).data
   }
 }
 </script>
+
+<style>
+  .home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+</style>
