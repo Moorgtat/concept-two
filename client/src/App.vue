@@ -24,32 +24,55 @@ export default {
 </script>
 
 <style>
-  #app {
-    text-align: center;
-    font-family: fantasy;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  input {
-    outline-style: none;
-    font-family: fantasy;
-    height: 25px;
-    width: 80%;
-    margin-bottom: 10px;
-    border-radius: 5px;
-  }
-  .btn-one {
-    outline-style: none;
-    height: 40px;
-    width: 70px;
-    font-family: fantasy;
-    background: white;
-    border: 1px solid black;
-    border-radius: 15px;
-    transition: 1s ease;
-    margin: 5px;
-  }
-  .btn-one:hover {
-    background: rgba(103, 128, 159, 0.2);
-  }
+    #app {
+        text-align: center;
+        font-family: fantasy;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    input {
+        outline-style: none;
+        font-family: fantasy;
+        height: 25px;
+        width: 80%;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+    .btn-one {
+        outline-style: none;
+        height: 40px;
+        width: 70px;
+        font-family: fantasy;
+        background: white;
+        border: 1px solid black;
+        border-radius: 15px;
+        transition: 1s ease;
+        margin: 5px;
+    }
+
+    .btn-one:hover {
+        background: rgba(103, 128, 159, 0.2);
+    }
+
+    .btn-two {
+        outline-style: none;
+        height: 30px;
+        width: 50px;
+        font-family: fantasy;
+        background: white;
+        border: 1px solid black;
+        border-radius: 15px;
+        transition: 1s ease;
+        margin: 5px;
+    }
+
+    .btn-two:hover {
+        background: rgba(103, 128, 159, 0.2);
+    }
 </style>

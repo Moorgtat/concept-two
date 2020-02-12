@@ -6,21 +6,24 @@
         {{song.title}} -
         {{song.artist}} -
         {{song.album}}
+        <RouterLink :to="{name: 'song', params: {songId: song.id}}">
+        <button class="btn-two" >view</button>
+        </RouterLink>
       </div>
+      <RouterLink to="/create">
+      <button class="btn-one" style="font-size: 18px">ADD</button>
+      </RouterLink>
     </Panel>
-    <CreateSong/>
   </div>
 </template>
 
 <script>
 import SongService from '@/services/SongService'
 import Panel from '../components/Panel'
-import CreateSong from '@/components/CreateSong'
 export default {
   name: 'Home',
   components: {
-    Panel,
-    CreateSong
+    Panel
   },
   data () {
     return {
@@ -35,9 +38,6 @@ export default {
 
 <style>
   .home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+    min-width: 450px;
   }
 </style>

@@ -48,6 +48,7 @@ export default {
     async createSong () {
       try {
         await SongService.post(this.song)
+        await this.$router.push('/')
       } catch (error) {
         window.console.log(error)
       }
