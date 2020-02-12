@@ -31,11 +31,12 @@ export default {
     -moz-osx-font-smoothing: grayscale;
   }
   input {
-   outline-style: none;
+    outline-style: none;
     font-family: fantasy;
-   height: 25px;
-    width: 180px;
-   border-radius: 5px;
+    height: 25px;
+    width: 80%;
+    margin-bottom: 10px;
+    border-radius: 5px;
   }
   .btn-one {
     outline-style: none;
@@ -46,6 +47,7 @@ export default {
     border: 1px solid black;
     border-radius: 15px;
     transition: 1s ease;
+    margin: 5px;
   }
   .btn-one:hover {
     background: rgba(103, 128, 159, 0.2);

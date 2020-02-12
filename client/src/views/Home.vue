@@ -8,16 +8,19 @@
         {{song.album}}
       </div>
     </Panel>
+    <CreateSong/>
   </div>
 </template>
 
 <script>
 import SongService from '@/services/SongService'
 import Panel from '../components/Panel'
+import CreateSong from '@/components/CreateSong'
 export default {
   name: 'Home',
   components: {
-    Panel
+    Panel,
+    CreateSong
   },
   data () {
     return {
@@ -35,5 +38,6 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
 </style>
