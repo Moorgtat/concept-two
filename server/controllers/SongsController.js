@@ -33,5 +33,18 @@ module.exports = {
    })
  }
 },
-
+  async put (req, res) {
+    try {
+      await Song.update(req.body, {
+        where: {
+          id: req.params.songId
+        }
+      })
+      res.send(req.body)
+    } catch (err) {
+      res.status(500).send({
+        error: 'Editing song error'
+      })
+    }
+  }
 }
