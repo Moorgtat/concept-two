@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
+      <router-link to="/songs">Songs</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link v-if="!$store.state.isUserLoggedIn" to="/login">Login</router-link> |
       <router-link v-if="!$store.state.isUserLoggedIn" to="/register">Register</router-link>
@@ -17,7 +17,7 @@ export default {
     logout () {
       this.$store.dispatch('setToken', null)
       this.$store.dispatch('setUser', null)
-      this.$router.push('/')
+      this.$router.push('/songs')
     }
   }
 }
