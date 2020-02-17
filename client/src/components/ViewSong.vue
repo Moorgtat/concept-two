@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>It's ViewSong!</h2>
-        <RouterLink :to="{name: 'EditSong', params: {songId: song.id}}">
+        <RouterLink :to="{name: 'EditSong', params () { return {songId: song.id}}}">
             <button class="btn-two" >Edit</button>
         </RouterLink>
         <p>{{ song.title }}</p>
@@ -17,12 +17,11 @@
 
 <script>
 import SongService from '@/services/SongService'
-
 export default {
   name: 'ViewSong',
   data () {
     return {
-      song: null
+      song: {}
     }
   },
   async mounted () {

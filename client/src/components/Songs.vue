@@ -22,6 +22,7 @@
 
 <script>
 import SongService from '@/services/SongService'
+import _ from 'lodash'
 import Panel from '../components/Panel'
 export default {
   name: 'songs',
@@ -35,7 +36,7 @@ export default {
     }
   },
   watch: {
-    search (value) {
+    search: _.debounce(async function (value) {
       const route = {
         name: 'Songs'
       }
@@ -45,7 +46,7 @@ export default {
         }
       }
       this.$router.push(route)
-    },
+    }, 700),
     '$route.query.search': {
       immediate: true,
       async handler (value) {
