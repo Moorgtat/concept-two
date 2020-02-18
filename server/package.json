@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "nodemon app.js",
-    "original": "node ./app.js"
+    "original": "node ./app.js",
+    "seed": "node ./seed/index.js"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.0",
