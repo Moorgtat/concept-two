@@ -19,7 +19,7 @@ module.exports = {
   },
   async post (req, res) {
     try {
-      const {songId, userId} = req.query
+      const { songId, userId } = req.body
       const bookmark = await Bookmark.findOne({
         where: {
           SongId: songId,
