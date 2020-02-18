@@ -10,8 +10,6 @@ export default {
     return Api().post('bookmarks', bookmark)
   },
   delete (bookmark) {
-    return Api().delete('bookmarks', {
-      params: bookmark
-    })
+    return Api().delete('bookmarks', { params: bookmark })
   }
 }

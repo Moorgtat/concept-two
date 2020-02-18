@@ -4,8 +4,8 @@
         <RouterLink :to="{name: 'EditSong', params () { return {songId: song.id}}}">
             <button class="btn-two" >Edit</button>
         </RouterLink>
-        <button v-if="$store.state.isUserLoggedIn && !isBookmarked" class="btn-two" @click="bookMe">book</button>
-        <button v-if="$store.state.isUserLoggedIn && isBookmarked" class="btn-two" @click="unbookMe">unbo</button>
+        <button v-if="$store.state.isUserLoggedIn && !bookmark" class="btn-two" @click="bookMe">book</button>
+        <button v-if="$store.state.isUserLoggedIn && bookmark" class="btn-two" @click="unbookMe">unbo</button>
         <p>{{ song.title }}</p>
         <p>{{ song.artist }}</p>
         <p>{{ song.genre }}</p>
@@ -25,16 +25,16 @@ export default {
   data () {
     return {
       song: {},
-      isBookmarked: false
+      bookmark: null
     }
   },
   methods: {
     async bookMe () {
       try {
-        await BookmarksService.post({
+        this.bookmark = (await BookmarksService.post({
           songId: this.song.id,
           userId: this.$store.state.user.id
-        })
+        })).data
       } catch (error) {
         window.console.log(error)
       }
@@ -45,6 +45,22 @@ export default {
           songId: this.song.id,
           userId: this.$store.state.user.id
         })
+        this.bookmark = null
+      } catch (error) {
+        window.console.log(error)
+      }
+    }
+  },
+  watch: {
+    async song () {
+      if (!this.$store.state.isUserLoggedIn) {
+        return
+      }
+      try {
+        this.bookmark = (await BookmarksService.index({
+          songId: this.song.id,
+          userId: this.$store.state.user.id
+        })).data
       } catch (error) {
         window.console.log(error)
       }
@@ -53,18 +69,6 @@ export default {
   async mounted () {
     const songId = this.$store.state.route.params.songId
     this.song = (await SongService.show(songId)).data
-    if (!this.$store.state.isUserLoggedIn) {
-      return
-    }
-    try {
-      const bookmark = (await BookmarksService.index({
-        songId: this.song.id,
-        userId: this.$store.state.user.id
-      })).data
-      this.isBookmarked = !!bookmark
-    } catch (error) {
-      window.console.log(error)
-    }
   }
 }
 </script>
