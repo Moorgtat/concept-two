@@ -2,7 +2,7 @@
   <div class="songs">
     <h2>This is the home page</h2>
     <label>Search : </label>
-      <br>
+    <br>
     <input v-model="search" placeholder="Search Songs by title or artist..."/>
     <Panel title="Songs">
       <div v-for="song in songs" :key="song.id">
@@ -16,6 +16,9 @@
       <RouterLink to="/create">
       <button class="btn-one" style="font-size: 18px">ADD</button>
       </RouterLink>
+    </Panel>
+    <Panel title="Bookmarks" v-if="$store.state.isUserLoggedIn">
+      <div></div>
     </Panel>
   </div>
 </template>

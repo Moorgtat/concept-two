@@ -14,6 +14,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+require('./passport')
+
 require('./routes/routes')(app)
 
 sequelize.sync({force: false})
