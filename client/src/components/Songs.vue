@@ -18,13 +18,20 @@
       </RouterLink>
     </Panel>
     <Panel title="Bookmarks" v-if="$store.state.isUserLoggedIn">
-      <div></div>
+      <div v-for="bookmark in bookmarks" :key="bookmark.id">
+        {{bookmark.title}} -
+        {{bookmark.artist}}
+        <RouterLink :to="{name: 'ViewSong', params: {songId: bookmark.id}}">
+          <button class="btn-two" >view</button>
+        </RouterLink>
+      </div>
     </Panel>
   </div>
 </template>
 
 <script>
 import SongService from '@/services/SongService'
+import BookmarksService from '@/services/BookmarksService'
 import _ from 'lodash'
 import Panel from '../components/Panel'
 export default {
@@ -35,7 +42,8 @@ export default {
   data () {
     return {
       songs: null,
-      search: null
+      search: null,
+      bookmarks: null
     }
   },
   watch: {
@@ -55,6 +63,18 @@ export default {
       async handler (value) {
         this.songs = (await SongService.index(value)).data
       }
+    }
+  },
+  async mounted () {
+    if (!this.$store.state.isUserLoggedIn) {
+      return
+    }
+    try {
+      this.bookmarks = (await BookmarksService.indexAll({
+        userId: this.$store.state.user.id
+      })).data
+    } catch (error) {
+      window.console.log(error)
     }
   }
 }

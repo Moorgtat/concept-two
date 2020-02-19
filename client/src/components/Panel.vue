@@ -19,7 +19,7 @@ export default {
 <style scoped>
     .panel {
         min-width: 80%;
-        min-height: 400px;
+        min-height: 200px;
         border: 2px black solid;
         margin-bottom: 20px;
     }
