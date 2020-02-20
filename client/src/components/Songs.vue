@@ -1,32 +1,38 @@
 <template>
-  <div class="songs">
-    <h2>This is the home page</h2>
-    <label>Search : </label>
-    <br>
-    <input v-model="search" placeholder="Search Songs by title or artist..."/>
-    <Panel title="Songs">
-      <div v-for="song in songs" :key="song.id">
-        {{song.title}} -
-        {{song.artist}} -
-        {{song.album}}
-        <RouterLink :to="{name: 'ViewSong', params: {songId: song.id}}">
-        <button class="btn-two" >view</button>
+    <div class="songs">
+        <div v-if="$store.state.isUserLoggedIn">
+            <div>Bookmarks</div>
+            <div v-if="Object.keys(bookmarks).length === 0">You d'ont have any bookmarks</div>
+            <div v-for="bookmark in bookmarks" :key="bookmark.id">
+                {{bookmark.title}} -
+                {{bookmark.artist}}
+                <RouterLink :to="{name: 'ViewSong', params: {songId: bookmark.id}}">
+                    <button class="btn-two">view</button>
+                </RouterLink>
+            </div>
+        </div>
+        <label>Search :</label>
+        <input v-model="search" placeholder="Search Songs by title or artist..."/>
+        <RouterLink to="/create">
+            <button class="btn-one" style="font-size: 18px">ADD</button>
         </RouterLink>
-      </div>
-      <RouterLink to="/create">
-      <button class="btn-one" style="font-size: 18px">ADD</button>
-      </RouterLink>
-    </Panel>
-    <Panel title="Bookmarks" v-if="$store.state.isUserLoggedIn">
-      <div v-for="bookmark in bookmarks" :key="bookmark.id">
-        {{bookmark.title}} -
-        {{bookmark.artist}}
-        <RouterLink :to="{name: 'ViewSong', params: {songId: bookmark.id}}">
-          <button class="btn-two" >view</button>
-        </RouterLink>
-      </div>
-    </Panel>
-  </div>
+        <Panel>
+            <div v-if="Object.keys(songs).length === 0">No songs available</div>
+            <div class="cd-container">
+            <div v-for="song in songs" :key="song.id" class="cd">
+                <img :src="song.albumImageUrl" style="width: 300px; height: 220px" alt="Image de l'album"/>
+                <div>{{song.title}}</div>
+                <div>{{song.artist}}</div>
+                <div>{{song.album}}</div>
+                <div>
+                <RouterLink :to="{name: 'ViewSong', params: {songId: song.id}}">
+                    <button class="btn-two">view</button>
+                </RouterLink>
+                </div>
+            </div>
+            </div>
+        </Panel>
+    </div>
 </template>
 
 <script>
@@ -41,9 +47,9 @@ export default {
   },
   data () {
     return {
-      songs: null,
+      songs: {},
       search: null,
-      bookmarks: null
+      bookmarks: {}
     }
   },
   watch: {
@@ -83,5 +89,24 @@ export default {
 <style>
   .songs {
     min-width: 450px;
+  }
+  .fr {
+      position: absolute;
+      right: 30%;
+      top: 140px;
+  }
+  .cd-container {
+      padding-right: 5%;
+      padding-left: 5%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+  .cd {
+      width: 300px;
+      height: 290px;
+      border: solid 1px black;
+      margin: 20px;
   }
 </style>

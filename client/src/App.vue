@@ -2,7 +2,6 @@
   <div id="app">
     <div id="nav">
       <router-link to="/songs">Songs</router-link> |
-      <router-link to="/about">About</router-link> |
       <router-link v-if="!$store.state.isUserLoggedIn" to="/login">Login</router-link> |
       <router-link v-if="!$store.state.isUserLoggedIn" to="/register">Register</router-link>
       <button v-if="$store.state.isUserLoggedIn" @click="logout" class="btn-one">Logout</button>
@@ -35,13 +34,21 @@ export default {
         width: 100%;
     }
 
+    #nav {
+      margin-bottom: 25px;
+    }
+
     input {
         outline-style: none;
         font-family: fantasy;
         height: 25px;
-        width: 80%;
+        width: 300px;
         margin-bottom: 10px;
         border-radius: 5px;
+    }
+
+    label {
+      margin: 5px;
     }
 
     .btn-one {

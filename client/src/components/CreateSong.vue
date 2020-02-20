@@ -1,7 +1,7 @@
 <template>
 <div class="createSong">
     <h2>This is ViewSong!</h2>
-    <Panel title="CreateSong">
+    <Panel>
         <input type="text" name="title" v-model="song.title" placeholder="title"/>
         <br>
         <input type="text" name="artist" v-model="song.artist" placeholder="artist"/>

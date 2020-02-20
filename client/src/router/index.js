@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Songs from '@/components/Songs'
-import About from '@/components/About.vue'
 import CreateSong from '@/components/CreateSong'
 import EditSong from '@/components/EditSong'
 import ViewSong from '@/components/ViewSong'
@@ -41,11 +40,6 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
-    },
-    {
-      path: '/about',
-      name: 'About',
-      component: About
     },
     {
       path: '*',
