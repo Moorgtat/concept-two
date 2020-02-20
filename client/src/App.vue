@@ -51,6 +51,11 @@ export default {
       margin: 5px;
     }
 
+    a {
+      color: black;
+      text-decoration: none;
+    }
+
     .btn-one {
         outline-style: none;
         height: 40px;

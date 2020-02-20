@@ -1,25 +1,42 @@
 <template>
-    <div>
-        <h2>It's ViewSong!</h2>
-        <RouterLink :to="{name: 'EditSong', params () { return {songId: song.id}}}">
-            <button class="btn-two" >Edit</button>
-        </RouterLink>
+    <div class="viewsong">
         <button v-if="$store.state.isUserLoggedIn && !bookmark" class="btn-two" @click="bookMe">book</button>
         <button v-if="$store.state.isUserLoggedIn && bookmark" class="btn-two" @click="unbookMe">unbo</button>
-        <p>{{ song.title }}</p>
-        <p>{{ song.artist }}</p>
-        <p>{{ song.genre }}</p>
-        <p>{{ song.album }}</p>
-        <img :src="song.albumImageUrl" style="width: 500px; height: 400px" alt="Image de l'album"/>
-        <youtube :video-id="song.youtubeId"></youtube>
-        <p>{{ song.lyrics }}</p>
-        <p>{{ song.tab }}</p>
+        <RouterLink :to="{name: 'EditSong', params () { return {songId: song.id}}}">
+            <button class="btn-two">Edit</button>
+        </RouterLink>
+        <div class="head">
+            <div class="infos-container">
+                <div>
+                    <div>Titre :</div>
+                    <div>{{ song.title }}</div>
+                </div>
+                <div>
+                    <div>Artiste :</div>
+                    <div>{{ song.artist }}</div>
+                </div>
+                <div>
+                    <div>Genre :</div>
+                    <div>{{ song.genre }}</div>
+                </div>
+                <div>
+                <div>Titre :</div>
+                <div>{{ song.album }}</div>
+                </div>
+        </div>
+        <div class="image-container">
+            <img :src="song.albumImageUrl" style="width: 100%; height: 100%" alt="Image de l'album"/>
+        </div>
+    </div>
+    <youtube :video-id="song.youtubeId" :player-vars="{ autoplay: 1 }" player-width="80%"
+             player-height="400px"></youtube>
     </div>
 </template>
 
 <script>
 import SongService from '@/services/SongService'
 import BookmarksService from '@/services/BookmarksService'
+
 export default {
   name: 'ViewSong',
   data () {
@@ -74,5 +91,33 @@ export default {
 </script>
 
 <style scoped>
+    .viewsong {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 
+    .head {
+        width: 80%;
+        margin: 0 10%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        border: solid 1px black;
+    }
+
+    .infos-container {
+        width: 30%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        border: solid 1px red;
+    }
+
+    .image-container {
+        width: 70%;
+        border: solid 1px blue;
+    }
 </style>

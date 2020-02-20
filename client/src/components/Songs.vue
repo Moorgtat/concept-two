@@ -19,17 +19,16 @@
         <Panel>
             <div v-if="Object.keys(songs).length === 0">No songs available</div>
             <div class="cd-container">
-            <div v-for="song in songs" :key="song.id" class="cd">
-                <img :src="song.albumImageUrl" style="width: 300px; height: 220px" alt="Image de l'album"/>
-                <div>{{song.title}}</div>
-                <div>{{song.artist}}</div>
-                <div>{{song.album}}</div>
-                <div>
-                <RouterLink :to="{name: 'ViewSong', params: {songId: song.id}}">
-                    <button class="btn-two">view</button>
-                </RouterLink>
+                <div v-for="song in songs" :key="song.id" class="cd clarity">
+                    <RouterLink :to="{name: 'ViewSong', params: {songId: song.id}}">
+                        <img :src="song.albumImageUrl" style="width: 300px; height: 220px" alt="Image de l'album"/>
+                        <div>{{song.title}}</div>
+                        <div>{{song.artist}}</div>
+                        <div>{{song.album}}</div>
+                    </RouterLink>
+                    <div>
+                    </div>
                 </div>
-            </div>
             </div>
         </Panel>
     </div>
@@ -108,5 +107,8 @@ export default {
       height: 290px;
       border: solid 1px black;
       margin: 20px;
+  }
+  .clarity:hover {
+      opacity: 0.6;
   }
 </style>

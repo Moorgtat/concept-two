@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Songs from '@/components/Songs'
+import Register from '@/components/Register'
+import Login from '@/components/Login'
 import CreateSong from '@/components/CreateSong'
 import EditSong from '@/components/EditSong'
 import ViewSong from '@/components/ViewSong'
-import Register from '@/components/Register'
-import Login from '@/components/Login'
 
 Vue.use(Router)
 
