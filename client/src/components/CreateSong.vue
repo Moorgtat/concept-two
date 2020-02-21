@@ -19,7 +19,7 @@
         <input type="text" name="tab" v-model="song.tab" placeholder="tab"/>
         <br>
         <div v-html="error"></div>
-        <button class="btn-one" @click="createSong">Create Song</button>
+        <button class="btn-one" @click="createSong">Create</button>
     </Panel>
 </div>
 </template>

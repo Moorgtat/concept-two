@@ -22,12 +22,12 @@
                     <div>{{ song.genre }}</div>
                 </div>
                 <div>
-                <div>Titre :</div>
+                <div>Album :</div>
                 <div>{{ song.album }}</div>
                 </div>
-        </div>
+            </div>
         <div class="image-container">
-            <img class="img-spec" :src="song.albumImageUrl" alt="Image de l'album"/>
+            <img class="img-spec" :src="song.albumImageUrl" style="height: 300px" alt="Image de l'album"/>
         </div>
     </div>
     <youtube :video-id="song.youtubeId" :player-vars="{ autoplay: 1 }" player-width="80%"></youtube>
@@ -92,6 +92,7 @@ export default {
 <style scoped>
     .viewsong {
         width: 100%;
+        padding-bottom: 40px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -99,23 +100,24 @@ export default {
 
     .head {
         width: 80%;
-        max-height: 300px;
-        margin: 10px 10%;
+        min-height: 300px;
+        margin: 20px 10%;
         display: flex;
         flex-direction: row;
         justify-content: center;
+        flex-wrap: wrap;
     }
 
     .infos-container {
-        width: 30%;
         padding: 10px;
         display: flex;
+        flex: 1;
         flex-direction: column;
         justify-content: space-evenly;
     }
 
     .image-container {
-        width: 70%;
+        flex: 1;
     }
 
     .img-spec {

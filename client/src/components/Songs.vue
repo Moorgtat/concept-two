@@ -2,7 +2,7 @@
     <div class="songs">
         <div v-if="$store.state.isUserLoggedIn" style="margin: 10px">
             <div style="font-size: 18px"><strong>My Playlist</strong></div>
-            <div v-if="Object.keys(bookmarks).length === 0">You d'ont have any bookmarks</div>
+            <div v-if="Object.keys(bookmarks).length === 0">Your playlist is empty !</div>
             <div v-for="bookmark in bookmarks" :key="bookmark.id">
                 {{bookmark.title}} -
                 {{bookmark.artist}}
@@ -17,11 +17,11 @@
             <button class="btn-two">add</button>
         </RouterLink>
         <Panel>
-            <div v-if="Object.keys(songs).length === 0">No songs available</div>
+            <div v-if="Object.keys(songs).length === 0">No songs available !</div>
             <div class="cd-container">
                 <div v-for="song in songs" :key="song.id" class="cd clarity">
                     <RouterLink :to="{name: 'ViewSong', params: {songId: song.id}}">
-                        <img :src="song.albumImageUrl" style=" height: 220px" alt="Image de l'album"/>
+                        <img :src="song.albumImageUrl" style=" height: 220px; width: 240px" alt="Image de l'album"/>
                         <div>{{song.title}}</div>
                         <div>{{song.artist}}</div>
                         <div>{{song.album}}</div>
@@ -100,7 +100,8 @@ export default {
   }
 
   .cd {
-      height: 290px;
+      height: 300px;
+      max-width: 240px;
       border: solid 1px black;
       margin: 20px;
   }
