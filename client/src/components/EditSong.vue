@@ -1,6 +1,6 @@
 <template>
 <div class="editSong">
-    <h2>This is ViewSong!</h2>
+    <h2>Edit this song !</h2>
     <Panel>
         <label>Titre : </label>
         <br>
