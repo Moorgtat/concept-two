@@ -1,6 +1,6 @@
 <template>
     <div id="register">
-        <h2>This is the register page</h2>
+        <h2>Register</h2>
         <input type="email" name="email" v-model="email" placeholder="email"/>
         <br>
         <input type="password" name="password" v-model="password" placeholder="password"/>

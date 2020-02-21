@@ -1,7 +1,7 @@
 <template>
     <div class="songs">
-        <div v-if="$store.state.isUserLoggedIn">
-            <div>Bookmarks</div>
+        <div v-if="$store.state.isUserLoggedIn" style="margin: 10px">
+            <div style="font-size: 18px"><strong>My Playlist</strong></div>
             <div v-if="Object.keys(bookmarks).length === 0">You d'ont have any bookmarks</div>
             <div v-for="bookmark in bookmarks" :key="bookmark.id">
                 {{bookmark.title}} -
@@ -12,16 +12,16 @@
             </div>
         </div>
         <label>Search :</label>
-        <input v-model="search" placeholder="Search Songs by title or artist..."/>
+        <input v-model="search" placeholder="Search songs by title or artist..."/>
         <RouterLink to="/create">
-            <button class="btn-one" style="font-size: 18px">ADD</button>
+            <button class="btn-two">add</button>
         </RouterLink>
         <Panel>
             <div v-if="Object.keys(songs).length === 0">No songs available</div>
             <div class="cd-container">
                 <div v-for="song in songs" :key="song.id" class="cd clarity">
                     <RouterLink :to="{name: 'ViewSong', params: {songId: song.id}}">
-                        <img :src="song.albumImageUrl" style="width: 300px; height: 220px" alt="Image de l'album"/>
+                        <img :src="song.albumImageUrl" style=" height: 220px" alt="Image de l'album"/>
                         <div>{{song.title}}</div>
                         <div>{{song.artist}}</div>
                         <div>{{song.album}}</div>
@@ -89,11 +89,7 @@ export default {
   .songs {
     min-width: 450px;
   }
-  .fr {
-      position: absolute;
-      right: 30%;
-      top: 140px;
-  }
+
   .cd-container {
       padding-right: 5%;
       padding-left: 5%;
@@ -102,12 +98,13 @@ export default {
       flex-wrap: wrap;
       justify-content: center;
   }
+
   .cd {
-      width: 300px;
       height: 290px;
       border: solid 1px black;
       margin: 20px;
   }
+
   .clarity:hover {
       opacity: 0.6;
   }

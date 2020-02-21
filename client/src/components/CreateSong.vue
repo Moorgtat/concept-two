@@ -18,6 +18,7 @@
         <br>
         <input type="text" name="tab" v-model="song.tab" placeholder="tab"/>
         <br>
+        <div v-html="error"></div>
         <button class="btn-one" @click="createSong">Create Song</button>
     </Panel>
 </div>
@@ -33,6 +34,7 @@ export default {
   },
   data () {
     return {
+      error: null,
       song: {
         title: null,
         artist: null,
@@ -51,7 +53,7 @@ export default {
         await SongService.post(this.song)
         await this.$router.push('/')
       } catch (error) {
-        window.console.log(error)
+        this.error = error.response.data.error
       }
     }
   }

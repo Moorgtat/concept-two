@@ -1,10 +1,12 @@
 <template>
     <div class="viewsong">
+        <div>
         <button v-if="$store.state.isUserLoggedIn && !bookmark" class="btn-two" @click="bookMe">book</button>
         <button v-if="$store.state.isUserLoggedIn && bookmark" class="btn-two" @click="unbookMe">unbo</button>
         <RouterLink :to="{name: 'EditSong', params () { return {songId: song.id}}}">
             <button class="btn-two">Edit</button>
         </RouterLink>
+        </div>
         <div class="head">
             <div class="infos-container">
                 <div>
@@ -25,11 +27,10 @@
                 </div>
         </div>
         <div class="image-container">
-            <img :src="song.albumImageUrl" style="width: 100%; height: 100%" alt="Image de l'album"/>
+            <img class="img-spec" :src="song.albumImageUrl" alt="Image de l'album"/>
         </div>
     </div>
-    <youtube :video-id="song.youtubeId" :player-vars="{ autoplay: 1 }" player-width="80%"
-             player-height="400px"></youtube>
+    <youtube :video-id="song.youtubeId" :player-vars="{ autoplay: 1 }" player-width="80%"></youtube>
     </div>
 </template>
 
@@ -49,8 +50,7 @@ export default {
     async bookMe () {
       try {
         this.bookmark = (await BookmarksService.post({
-          songId: this.song.id,
-          userId: this.$store.state.user.id
+          songId: this.song.id
         })).data
       } catch (error) {
         window.console.log(error)
@@ -59,8 +59,7 @@ export default {
     async unbookMe () {
       try {
         await BookmarksService.delete({
-          songId: this.song.id,
-          userId: this.$store.state.user.id
+          songId: this.song.id
         })
         this.bookmark = null
       } catch (error) {
@@ -100,11 +99,11 @@ export default {
 
     .head {
         width: 80%;
-        margin: 0 10%;
+        max-height: 300px;
+        margin: 10px 10%;
         display: flex;
         flex-direction: row;
         justify-content: center;
-        border: solid 1px black;
     }
 
     .infos-container {
@@ -113,11 +112,13 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        border: solid 1px red;
     }
 
     .image-container {
         width: 70%;
-        border: solid 1px blue;
+    }
+
+    .img-spec {
+        height: 100%;
     }
 </style>
