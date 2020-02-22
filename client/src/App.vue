@@ -34,7 +34,6 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
   }
 
   #nav {
@@ -103,5 +102,16 @@ export default {
     right: 20px;
     top: 20px;
     font-size: 16px;
+  }
+
+  @media (max-width: 400px) {
+    #logreg-container {
+      right: 0;
+      top: 20px;
+    }
+    #btn-logout {
+      right: 0;
+      top: 20px;
+    }
   }
 </style>

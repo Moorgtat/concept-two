@@ -7,15 +7,16 @@
                 {{bookmark.title}} -
                 {{bookmark.artist}}
                 <RouterLink :to="{name: 'ViewSong', params: {songId: bookmark.id}}">
-                    <button class="btn-two">view</button>
+                    <button class="btn-two">play</button>
                 </RouterLink>
             </div>
         </div>
-        <label>Search :</label>
-        <input v-model="search" placeholder="Search songs by title or artist..."/>
+        <div class="search-io"><label style="margin: 0; padding: 0">Search :</label>
+        <input v-model="search" placeholder="Search songs by title or artist..." style="margin: 3px"/>
         <RouterLink to="/create">
-            <button class="btn-two">add</button>
+            <button class="btn-two" style="margin: 0">add</button>
         </RouterLink>
+        </div>
         <Panel>
             <div v-if="Object.keys(songs).length === 0">No songs available !</div>
             <div class="cd-container">
@@ -108,5 +109,9 @@ export default {
 
   .clarity:hover {
       opacity: 0.6;
+  }
+
+  .search-io {
+      padding: 0 50px;
   }
 </style>
