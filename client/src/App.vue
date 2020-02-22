@@ -106,12 +106,13 @@ export default {
 
   @media (max-width: 400px) {
     #logreg-container {
-      right: 0;
-      top: 20px;
+      right: 10px;
+      top: 10px;
+      font-size: 14px;
     }
     #btn-logout {
-      right: 0;
-      top: 20px;
+      right: 10px;
+      top: 10px;
     }
   }
 </style>
