@@ -1,5 +1,5 @@
 ﻿# Concept-two
-Fullstack Node / Express / vue site.
+Fullstack Node / Express / Vue. From scratch to deploy.
 
 # Features
 Songs
